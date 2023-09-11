@@ -1,5 +1,6 @@
 package com.intern.security.controller;
 
+import com.intern.security.model.LoginDTO;
 import com.intern.security.model.RegisterUserDTO;
 import com.intern.security.model.User;
 import com.intern.security.service.AuthenticationService;
@@ -17,5 +18,10 @@ public class AuthenticationController {
     @PostMapping("/register")
     public User registerUser(@RequestBody RegisterUserDTO body){
         return authenticationService.register(body.getUsername(),body.getPassword());
+    }
+
+    @PostMapping("/login")
+    public LoginDTO login (@RequestBody RegisterUserDTO body){
+        return authenticationService.loginUser(body.getUsername(),body.getPassword());
     }
 }
